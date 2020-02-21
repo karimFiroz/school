@@ -1,0 +1,6 @@
+.tblone{wodth:100%; border:1px solid #fff; margin:20px 0}
+.tblone th{padding:5px 10px 0 0;text-align:left; }
+.tblone td{padding:5px 10px 0 0;text-align:left; }
+table.tblone tr:nth-child(2n+1){background:#ffffff; height:30px;}
+table.tblone tr:nth-child(2n){background:#f1f1f1f1; height:30px;}
+#myform{width:400px;border:1px solid #ffffff;padding:10px;}

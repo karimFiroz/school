@@ -1,0 +1,89 @@
+
+	
+<html>
+<head>
+    <title>Add Data</title>
+	<link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+ 
+<body><br /><br />
+    <a href="index.php"><h2>Home</h2></a>
+    <br/>
+<?php echo "Done sn =". $_GET['sn'];?>
+    <form action="add.php?sn=<?php echo $sn ;?>" method="post" name="form1">
+        <table width="25%" border="0" class="tblone">
+            <tr> 
+                <td>SN</td>
+                <td ><input type="text" name="sn"></td>
+				
+           </tr>
+		   <tr>
+                <td>ID</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+		   <tr>
+                <td>SID</td>
+                <td><input type="text" name="sid"></td>
+            </tr>
+			 <tr>
+                <td>mcq_1st</td>
+                <td><input type="text" name="mcq_1st"></td>
+            </tr>
+			 <tr>
+                <td>cq_1st</td>
+                <td><input type="text" name="cq_1st"></td>
+            </tr>
+			 <tr>
+                <td>mcq_2nd</td>
+                <td><input type="text" name="mcq_2nd"></td>
+            </tr>
+			 <tr>
+                <td>cq_2nd</td>
+                <td><input type="text" name="cq_2nd"></td>
+            </tr>
+		   <tr>
+                <td>MCQ</td>
+                <td><input type="text" name="mcq"></td>
+            </tr>
+		   <tr>
+                <td>CQ</td>
+                <td><input type="text" name="cq"></td>
+            </tr>
+		   <tr>
+                <td>Pra</td>
+                <td><input type="text" name="pra"></td>
+           </tr>
+		   <tr>
+                <td>CA</td>
+                <td><input type="text" name="ca"></td>
+            </tr>
+		   <tr>
+                <td>Total</td>
+                <td><input type="text" name="tot"></td>
+              </tr>
+		   <tr>
+                <td>GP</td>
+                <td><input type="text" name="gp"></td>
+             </tr>
+		   <tr>
+                <td>LG</td>
+                <td><input type="text" name="lg"></td>
+            </tr>
+		   <tr>
+                <td>GPA</td>
+                <td><input type="text" name="gpa"></td>
+            </tr>
+			 <tr>
+                <td>Grade</td>
+                <td><input type="text" name="grade"></td>
+            </tr>
+            <tr> 
+                <td></td>
+                <td><input type="submit" name="Submit" value="Add"></td>
+            </tr>
+        </table>
+    </form>
+	
+
+</body>
+</html>

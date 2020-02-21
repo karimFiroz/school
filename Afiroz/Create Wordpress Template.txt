@@ -1,0 +1,437 @@
+https://www.youtube.com/watch?v=Z1cAi0CM3aM&list=PLHswWCTGn7EyxVuUs9ZFQoGBqvXHA8g6P&index=3
+
+How to convert your website from static to dynamic?
+
+=========================================================
+1. Create a style.css file in your site and comment below
+/*
+
+Theme Name: moderna
+Theme URI: localhost/moderna/
+Author: Karim (author Name)
+Author URI:localhost/moderna/
+Description: moderna wordpress theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License 
+URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blog, one-column, two-columns,
+right-sidebar, custom-background, custom-header, custom-menu, editor-style, 
+featured-images, flexible-header, footer-widgets, full-width-template, 
+microformats, post-formats, rtl-language-support, sticky-post, theme-options, 
+translation-ready
+Text Domain:moderna (theme name)
+This theme, like WordPress,
+is licensed under the GPL.
+Use it to make something cool, have fun, 
+and share what you've learned with others.
+*/
+
+
+2. Create a picture named "screenshot.png" for your template.
+
+
+3. Convert all files in php format  from html in your site.
+
+
+4. Replace all http:// links , js and images by the code given below
+
+<?php echo get_template_directory_uri(); ?>/
+
+5. Activate your theme.
+
+
+6. Replace your <html> starting code which is given below
+
+<html <?php language_attributes();?>>
+
+
+7. Replace Title of your site by this code given bel
+<?php bloginfo('name');?>  or,
+
+<title><?php wp_title();?></title>
+
+
+8. Replace meta tag by these three codes which is given below
+
+<meta charset="<?php bloginfo('charset'); ?>" />
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+9. create dynamic your style .css file by this code
+
+<?php bloginfo('stylesheet_url');?>
+
+10. Place this code before ending </head> code
+
+<?php wp_head(); ?>
+
+11.Place this code before ending </body> code
+
+<?php wp_footer(); ?>
+
+
+12. Replace your <body> code by the code given below
+
+<body<?php body_class(); ?>>
+
+
+13. Create functions.php file in your website.
+
+
+14.Link logo with home page the code given below
+<a href="<?php bloginfo('home')>"><ing src="logo.jpg"/></a>
+
+<div class="sidebar">
+
+
+<?php dynamic_sidebar('sidebar-left'); ?>
+
+
+</div>
+
+15.Create header.php file and Place header code
+
+16.Create footer.php file and place footer code
+
+17. Create active_home.php file and place 
+
+18. To call header.php page from index.php the code given blow
+<?php get_header();?>
+
+19. To call footer.php page from index.php the code given blow
+<?php get_footer();?>
+
+20. If you have slider in your website
+Create slider.php page and place slider code
+
+21.To call slider.php page from index.php the code under header page calling code
+<?php get_header();?>
+<?php get_template_part('slider');?>
+
+22. If you have sidebar in your website
+Create sidebar.php page and place slider code
+
+23. If you have two sidebar create two sidebar file these are
+sidebar-left.php and sidebar-right.php and place their code
+
+24.Where you have cut sidebar codes their place these code below
+<?php get_sidebar('sidebar-left');?>
+<?php get_sidebar('sidebar-right');?>
+
+25. Create a file named functions.php and these codes are given below
+----------------------------------------functions.php--------------------------------------
+<?php
+/**
+ * firoz functions and definitions
+ *
+ * Set up the theme and provides some helper functions, which are used in the
+ * theme as custom template tags. Others are attached to action and filter
+ * hooks in WordPress to change core functionality.
+ *
+ * When using a child theme you can override certain functions (those wrapped
+ * in a function_exists() call) by defining them first in your child theme's
+ * functions.php file. The child theme's functions.php file is included before
+ * the parent theme's file, so the child theme functions would be used.
+ *
+ * @link https://codex.wordpress.org/Theme_Development
+ * @link https://codex.wordpress.org/Child_Themes
+ *
+ * Functions that are not pluggable (not wrapped in function_exists()) are
+ * instead attached to a filter or action hook.
+ *
+ * For more information on hooks, actions, and filters,
+ * {@link https://codex.wordpress.org/Plugin_API}
+ *
+ * @package WordPress
+ * @subpackage firoz
+ * @since firoz 1.0
+ */
+
+/**
+ * Set the content width based on the theme's design and stylesheet.
+ *
+ * @since Twenty Fifteen 1.0
+ */
+ add_action('after_setup_theme','firoz_functions');
+function firoz_functions(){
+	//text domain
+	load_theme_textdomain('firoz',get_template_directory().'/lang');
+	//theme supports
+add_theme_support('title-tag');
+add_theme_support('custom-logo');
+add_theme_support('post-thumbnails');
+add_theme_support('woocommerce');
+
+add_theme_support('post-formats',array(
+				'video',
+				'audio',
+				'gallery',
+				'quote',
+				'aside',
+				'link',
+				'image',
+				'status',
+				'chat',
+	));
+	add_post_type_support('page','post-formats');
+	
+	
+	
+	register_nav_menus(array(
+	'top-menu' =>__('Top Menu','firoz'),
+	
+	));
+add_action('after_setup_theme','firoz_functions');
+
+	register_nav_menus(array(
+	
+	));
+}
+add_action('after_setup_theme','firoz_functions');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+add_image_size('blog','300','200',array('top','center'));
+
+function firoz_css_js(){
+
+
+wp_enqueue_style('bootstrap', get_stylesheet_uri());
+
+wp_enqueue_script('jquery');
+wp_enqueue_script('jquery-ui-accordion');
+
+
+
+
+}
+add_action('wp_enqueue_scripts','firoz_css_js');
+
+
+function firoz_widget_areas(){
+	register_sidebar(array(
+
+'name'=>__('Left Sidebar','firoz'),
+'id'=>'sidebar-left',
+
+'before_widget'=>'<div class="single_sidebar">',
+'after_widget'=>'</div>',
+'before_title'=>'<h2>',
+'after_title'=>'</h2>',
+
+	));
+}
+add_action('widgets_init','firoz_widget_areas');
+
+
+
+function faruk_widget_areas(){
+	register_sidebar(array(
+
+'name'=>__('Middle Sidebar','faruk'),
+'id'=>'sidebar-middle',
+
+'before_widget'=>'<div class="single_sidebar">',
+'after_widget'=>'</div>',
+'before_title'=>'<h2>',
+'after_title'=>'</h2>',
+
+	));
+}
+add_action('widgets_init','faruk_widget_areas');
+
+function farid_widget_areas(){
+	register_sidebar(array(
+'name'=>__('Right Sidebar','farid'),
+'id'=>'sidebar-right',
+'before_widget'=>'<div class="single_sidebar">',
+'after_widget'=>'</div>',
+'before_title'=>'<h2>',
+'after_title'=>'</h2>',
+
+	));
+}
+add_action('widgets_init','farid_widget_areas');
+
+
+
+
+function firoz_theme_setup(){
+
+	//text domain
+
+load_theme_textdomain('active',get_template_directory().'/lang');
+
+	//theme supports
+
+	add_theme_support('title-tag');
+	add_theme_support('post-thumbnails');
+	add_theme_support('woocommerce');
+	
+	add_post_type_support('page','post-formats');
+
+	//slider post
+
+	register_post_type('firoz-slider',array(
+	'labels'=> array(
+	'name'=>__('sliders','firoz'),
+	'add_new'=>__('Add New Sliders','firoz'),
+	'add_new_item'=>__('Add New Sliders','firoz'),
+	'edit_new_item'=>__('Edit Sliders','firoz')
+	),
+	'public'=> true,
+	'supports'=>array('title')
+	));
+
+
+
+
+--------------------------------------------index.php--------------------------------------------
+
+	
+<?php get_header();?>
+
+
+
+<?php while(have_posts()) { 
+	the_post(); 
+	?>
+	<div class="post">
+		<h3><a href="<?php the_permalink;?>"><?php the_title(); ?></a></h3>
+		<?php the_post_thumbnail('blog',array(
+			'class'=>'image-responsive image-thumbnail'
+
+		));?>
+		<p><?php the_excerpt(); ?></p>
+		<a href="<?php the_permalink;?>" class="btn btn-primary">Read More</a>
+		<hr/>
+	</div>
+	<?php } 
+
+	the_posts_pagination(array(
+
+		'screen_reader_text'=>'',
+		'prev_text'=>'Age',
+		'next_text'=>'Pore'
+	));
+
+	?>
+
+
+
+
+
+<?php 
+if(have_posts()): 
+	while(have_posts()): 
+		the_post(); 
+		?>
+	
+	<div <?php post_class(); ?>>
+		
+		<?php
+		//Post thumbnails need this in functions.php: `add_theme_support('post-thumbnails');`
+		if(has_post_thumbnail()) the_post_thumbnail(array(100,100));
+		?>
+		
+		<h2 id="post-<?php the_ID(); ?>">
+			<a href="<?php the_permalink(); ?>" title="Permanent link to <?php the_title(); ?>"><?php the_title(); ?></a>
+		</h2>
+		
+		<div class="post-metadata">
+			<p>Posted on <?php the_time('F jS, Y'); ?> by <?php the_author(); ?> in <?php the_category(', '); ?></p>
+			<p><?php edit_post_link('Edit','','|'); ?> <?php comments_popup_link('No Comments &raquo;', '1 Comment &raquo;', '% Comments &raquo;'); ?></p>
+		</div>
+		
+		<div class="post-content">
+			<?php the_content('Read the rest of this entry &raquo;'); ?>
+			<?php /* the_excerpt(); */ ?>
+		</div>
+		
+		<div class="post-tags">
+			<?php the_tags(); ?>
+		</div>
+		
+	</div>
+	
+<?php endwhile; ?>
+	
+	<div class="post-navigation">
+		<div><?php posts_nav_link('', 'Next Entries &raquo;', ''); ?></div>
+		<div><?php posts_nav_link('', '', '&laquo; Previous Entries'); ?></div>
+	</div>
+	
+<?php else: ?>
+	<!-- No posts found -->
+<?php endif; ?>
+<a href="<?php the_permalink(); ?>">Read More</a>
+<?php the_time();?>
+<?php the_author();?>
+<?php the_excerpt();?>
+
+
+<?php get_sidebar('left');?>
+
+<?php get_sidebar('right');?>
+
+<?php get_footer();?>
+
+}
+
+?>
+<?php endif; ?>
+
+?????? ????? ???? functions.php ?? ????? ???
+
+
+
+function right_sidebar() {
+    register_sidebar(
+        array (
+            'name' => __( 'Right Sidebar', 'W3programmers Theme Sidebar' ),
+            'id' => 'right_sidebar',
+            'description' => __( 'Right Sidebar', 'W3programmers Theme Sidebar' ),
+            'before_widget' => '<aside class="sidebar">',
+            'after_widget' => "</aside>",
+            'before_title' => '<h4 class="heading-primary">',
+            'after_title' => '</h4>',
+        )
+    );
+}
+add_action( 'widgets_init', 'right_sidebar' );
+
+
+
+??? left_sidebar.php ?? ????? ???
+
+<?php if ( is_active_sidebar( 'left_sidebar' ) ) : ?>
+    <?php dynamic_sidebar( 'left_sidebar' ); ?>
+
+ ??? middle_sidebar.php ?? ????? ???
+ 
+ <?php if ( is_active_sidebar( 'middle_sidebar' ) ) : ?>
+    <?php dynamic_sidebar( 'middle_sidebar' ); ?>
+	
+	 ??? right_sidebar.php ?? ????? ???
+	 
+	  <?php if ( is_active_sidebar( 'right_sidebar' ) ) : ?>
+    <?php dynamic_sidebar( 'right_sidebar' ); ?>
